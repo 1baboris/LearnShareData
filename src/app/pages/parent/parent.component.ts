@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild, viewChild } from '@angular/core';
 import { ChildComponent } from '../child/child.component';
 
 @Component({
@@ -11,6 +11,11 @@ import { ChildComponent } from '../child/child.component';
 })
 export class ParentComponent {
   data = '';
+
+  @ViewChild(ChildComponent) child: any;
+  onClickGetChildData() {
+    this.data = this.child.data;
+  }
 
   getChildData(event: any) {
     this.data = event;
